@@ -1,14 +1,15 @@
-Public user (no auth)
-	- read news
-	- search news
-
-Administrator user (requires auth)
-	- add news
-	- edit news
-	- view all news he added or edited in a tabular view where he can search for them
-
-Backend: Java
-Frontend: Angular
-
-User (username, password)
-News (Heading, Picture?, Description, Date)
+You are required to implement a news portal application. The client for which you are
+implementing it requires following features.
+Requirements:
+This application has two kinds of users. A public user and an Administrator user. The public
+user has the possibility to read and to search for news without any kind of authentication or
+authorization.
+The administrator user has the possibility to perform the same actions as the public user plus
+he should be able to add news, edit news and he should also has the possibility to view all news
+he added or edited in a tabular view where he can search for them.
+Technical instructions:
+You can implement this application in any technology you desire.
+You should have a solid unit test coverage.
+It is not necessary to invest time in the CSS, but the end product should look nice, you can use
+a template for that.
+Good luck!
