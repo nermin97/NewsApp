@@ -1,0 +1,14 @@
+Public user (no auth)
+	- read news
+	- search news
+
+Administrator user (requires auth)
+	- add news
+	- edit news
+	- view all news he added or edited in a tabular view where he can search for them
+
+Backend: Java
+Frontend: Angular
+
+User (username, password)
+News (Heading, Picture?, Description, Date)

@@ -1,0 +1,35 @@
+<form class="search-form">
+  <mat-form-field class="example-full-width" >
+    <mat-label>Search News</mat-label>
+    <input matInput name="searchParam" [(ngModel)]="this.changingSearchParam">
+    <button mat-button matSuffix style="background-color: #3f51b5; color: aliceblue"  mat-icon-button (click)="searchClicked()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+<mat-grid-list class="example-full-width" [cols]="this.breakpoint" [rowHeight]="this.rowHeight" (window:resize)="onResize()">
+  <mat-grid-tile colspan="1" style="padding: 5px; margin: 5px" *ngFor="let news of pageSlice">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{news.title}}</mat-card-title>
+        <mat-card-subtitle>{{news.creationDate}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <textarea [mat-autosize]="false" [disabled]="true" matInput style="width: 493px; height: 172px" >{{news.description}}</textarea>
+      </mat-card-content>
+      <mat-card-actions *ngIf="this.authService.loggedIn()">
+        <button color="primary" mat-button (click)="editNews(news)">EDIT</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
+<mat-paginator
+  class="news-paginator"
+  [length]="this.newsList.length"
+  [pageSize]="6"
+  [pageSizeOptions]="[6, 12, 24]"
+  (page)="onPageChange($event)">
+</mat-paginator>
+

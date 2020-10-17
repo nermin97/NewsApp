@@ -1,0 +1,31 @@
+.example-header-image {
+  background-image: url("src/assets/images/headerImage.webp");
+  background-size: cover;
+}
+
+.example-card {
+  width: 500px;
+  height: 300px;
+}
+
+.news-paginator {
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 5%;
+}
+
+.example-full-width {
+  width: 100%;
+  min-width: 580px;
+}
+
+.dialog-style {
+  padding: 0;
+  width: 600px;
+  height: 450px;
+}
+
+.search-form {
+  margin-left: 20px;
+  margin-right: 20px;
+}
