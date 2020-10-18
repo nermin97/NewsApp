@@ -22,12 +22,17 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NewsDialogComponent } from './news-dialog/news-dialog.component';
+import {MatTableModule} from '@angular/material/table';
+import {DescriptionDialog} from './dashboard/dashboard.component';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    NewsDialogComponent
+    NewsDialogComponent,
+    DescriptionDialog
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,9 @@ import { NewsDialogComponent } from './news-dialog/news-dialog.component';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthServiceService,

@@ -18,6 +18,10 @@ export class AuthServiceService {
     return this.http.get(`${baseUrl}auth/`);
   }
 
+  register(data) :Observable<any> {
+    return this.http.post(`${baseUrl}auth/register`, data);
+  }
+
   loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -27,7 +31,6 @@ export class AuthServiceService {
   }
 
   getUser() {
-    return 'administrator@gmail.com'
     return localStorage.getItem('email');
   }
 

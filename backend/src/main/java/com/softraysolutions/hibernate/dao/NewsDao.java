@@ -19,12 +19,15 @@ public class NewsDao extends Dao<News> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<News> adminNews(User user) {
+    public List<News> adminNews(User user, String searchParam) {
         openSession();
-        List<News> list = session.createQuery("from News where created_by = :userId or edited_by = :userEmail")
-                .setParameter("userId", user.getId())
-                .setParameter("userEmail", user.getEmail())
-                .list();
+        List<News> list = new ArrayList<>();
+        if (searchParam.equals("all")) {
+            list = session.createQuery("from News where created_by = :userId or edited_by = :userEmail")
+                    .setParameter("userId", user.getId())
+                    .setParameter("userEmail", user.getEmail())
+                    .list();
+        }
         closeSession();
         return list;
     }

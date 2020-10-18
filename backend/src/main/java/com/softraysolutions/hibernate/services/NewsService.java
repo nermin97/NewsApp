@@ -53,8 +53,8 @@ public class NewsService {
         return returnDataList;
     }
 
-    public List<NewsReturnData> adminNews(int userId) {
-        List<News> newsList = newsDao.adminNews(userDao.getById(userId));
+    public List<NewsReturnData> adminNews(int userId, String searchParam) {
+        List<News> newsList = newsDao.adminNews(userDao.getById(userId), searchParam);
         List<NewsReturnData> returnDataList = new ArrayList<>();
         for (News n : newsList) {
             returnDataList.add(mapToReturnData(n));

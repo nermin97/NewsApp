@@ -31,10 +31,11 @@ public class NewsApi {
     }
 
     @GET
+    @Path("/admin/{searchParam}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response adminNews() {
+    public Response adminNews(@PathParam("searchParam") String searchParam) {
         try {
-            List<NewsReturnData> dataList = new NewsService().adminNews(getCurrentUserId());
+            List<NewsReturnData> dataList = new NewsService().adminNews(getCurrentUserId(), searchParam);
             return Response.ok(dataList, MediaType.APPLICATION_JSON).build();
         } catch (Exception e) {
             return errorType(e.getMessage());

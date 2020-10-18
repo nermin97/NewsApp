@@ -5,6 +5,7 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {NewsPublicComponent} from '../news-public/news-public.component';
 import {LoginComponent} from '../login/login.component';
 import {AuthGuard} from '../auth/guard/auth.guard';
+import {RegisterComponent} from '../register/register.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -42,5 +48,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   NewsPublicComponent,
   DashboardComponent,
-  LoginComponent
+  LoginComponent,
+  RegisterComponent
 ];

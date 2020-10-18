@@ -1,10 +1,16 @@
 <form class="search-form">
+
   <mat-form-field class="example-full-width" >
-    <mat-label>Search News</mat-label>
-    <input matInput name="searchParam" [(ngModel)]="this.changingSearchParam">
-    <button mat-button matSuffix style="background-color: #3f51b5; color: aliceblue"  mat-icon-button (click)="searchClicked()">
-      <mat-icon>search</mat-icon>
+    <button
+      type="button"
+      mat-mini-fab
+      matPrefix
+      style="margin-right: 5px; background-color: #3f51b5; color: aliceblue"
+      (click)="addNews()">
+      <mat-icon>add_circle_outline</mat-icon>
     </button>
+    <mat-label>Search News</mat-label>
+    <input matInput name="searchParam" (keyup.enter)="searchClicked()" [(ngModel)]="this.changingSearchParam">
   </mat-form-field>
 </form>
 <mat-grid-list class="example-full-width" [cols]="this.breakpoint" [rowHeight]="this.rowHeight" (window:resize)="onResize()">

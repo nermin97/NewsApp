@@ -25,8 +25,8 @@ export class NewsService {
     return this.http.get(`${baseUrl}news/${id}`);
   }
 
-  getAdmin(): Observable<any> {
-    return this.http.get(`${baseUrl}news/`);
+  getAdmin(searchParam: string): Observable<any> {
+    return this.http.get(`${baseUrl}news/admin/${searchParam}`);
   }
 
   save(news: News, user: string): Observable<any> {
