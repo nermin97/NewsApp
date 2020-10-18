@@ -18,6 +18,7 @@
 .app-toolbar {
   width: -moz-max-content;
   border-radius: 5%;
+  min-width: 580px;
 }
 
 :host {

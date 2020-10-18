@@ -28,5 +28,7 @@ public class AppConfig extends ResourceConfig {
 
         register(CORSFilter.class);
         register(AuthenticationFilter.class);
+
+        InitAdmin.init();
     }
 }
