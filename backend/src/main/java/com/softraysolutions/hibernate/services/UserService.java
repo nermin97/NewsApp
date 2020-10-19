@@ -10,11 +10,9 @@ import org.jvnet.hk2.annotations.Service;
 @Service
 public class UserService {
 
-    private static UserDao userDao;
+    private static UserDao userDao = new UserDao();
 
-    public UserService() {
-        userDao = new UserDao();
-    }
+    public UserService() {}
 
     public User save(UserCredentials uc, Enumerations.UserType userType){
         try {
@@ -28,6 +26,7 @@ public class UserService {
 
     public User get(UserCredentials uc) {
         User user = userDao.getByEmail(uc.getEmail());
+        if (user == null) return null;
         try {
             if(Encrypto.decrypt(user.getPassword()).equals(uc.getPassword()))
                 return user;

@@ -11,6 +11,8 @@ public class NewsReturnData {
     private String createdBy;
     private String editedBy;
 
+    public NewsReturnData() {}
+
     public NewsReturnData(int id, String title, String description, String creationDate, String createdBy, String editedBy) {
         this.setId(id);
         this.setTitle(title);

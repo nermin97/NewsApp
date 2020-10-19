@@ -34,7 +34,7 @@ public class Auth {
                 return errorType("User does not exist!");
             }
             String token = JwtHelper.generateToken(user);
-            UserAuth userAuth = new UserAuth(token, user.getEmail());
+            UserAuth userAuth = new UserAuth(token, user.getEmail(), user.getUserType().toString());
             return Response.ok(userAuth, MediaType.APPLICATION_JSON).build();
         } catch (Exception e){
             return errorType(e.getMessage());
@@ -53,7 +53,7 @@ public class Auth {
                 return errorType("Email is taken!");
 
             User user = new UserService().save(uc, Enumerations.UserType.ChildAdministrator);
-            return Response.ok(user.getEmail(), MediaType.APPLICATION_JSON).build();
+            return Response.ok(user, MediaType.APPLICATION_JSON).build();
         } catch (Exception e){
             return errorType(e.getMessage());
         }

@@ -6,6 +6,8 @@ public class NewsData {
     private String Description;
     private String createdBy;
 
+    public NewsData() {}
+
     public NewsData(String title, String description, String createdBy) {
         this.setTitle(title);
         this.setDescription(description);

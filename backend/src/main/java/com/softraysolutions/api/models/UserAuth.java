@@ -6,11 +6,14 @@ public class UserAuth {
 
     private String email;
 
+    private String type;
+
     public UserAuth() {}
 
-    public UserAuth(String token, String email) {
+    public UserAuth(String token, String email, String type) {
         this.setToken(token);
         this.setEmail(email);
+        this.setType(type);
     }
 
     public String getToken() {
@@ -19,6 +22,14 @@ public class UserAuth {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getEmail() {

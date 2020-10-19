@@ -1,11 +1,15 @@
 package com.softraysolutions.hibernate.entity;
 
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Indexed
 @Table(name = "news", schema = "public")
 public class News {
     @Id
@@ -15,22 +19,26 @@ public class News {
 
     @NotNull (message = "Title can not be null")
     @Column
+    @Field
     private String title;
 
-    @Column(name = "description")
+
+    @Column(name = "description", length = 100000)
+    @Field
     private String description;
 
     @Column(name = "creation_date")
     private Date creationDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "created_by")
     private User createdBy;
 
     @NotNull
     @Column(name = "edited_by")
     private String editedBy;
 
+    public News() {};
 
     public News(String title, String description, Date creationDate, User createdBy, String editedBy) {
         this.setTitle(title);
