@@ -10,9 +10,11 @@ import org.jvnet.hk2.annotations.Service;
 @Service
 public class UserService {
 
-    private static UserDao userDao = new UserDao();
+    private static UserDao userDao;
 
-    public UserService() {}
+    public UserService() {
+        userDao = new UserDao();
+    }
 
     public User save(UserCredentials uc, Enumerations.UserType userType){
         try {

@@ -42,7 +42,7 @@ public class NewsDao extends Dao<News> {
             org.hibernate.query.Query fullTextQuery = getFulTextQuery(searchParameter);
             list = fullTextQuery.list();
             list = list.stream().filter(
-                    news -> news.getCreatedBy().equals(user) || news.getEditedBy().equals(user.getEmail()))
+                    news -> news.getCreatedBy().getEmail().equals(user.getEmail()) || news.getEditedBy().equals(user.getEmail()))
                     .collect(Collectors.toList());
         }
         closeSession();

@@ -31,6 +31,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>7.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.23.4</version>
@@ -41,12 +46,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-orm</artifactId>
-            <version>5.6.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -152,9 +151,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>${project.build.sourceEncode}</encoding>
                 </configuration>
             </plugin>
 
@@ -230,6 +231,9 @@
                         <configuration>
                             <outputFile>
                                 src/main/resources/application.properties
+                            </outputFile>
+                            <outputFile>
+                                src/test/resources/application.properties
                             </outputFile>
                         </configuration>
                     </execution>
