@@ -29,13 +29,13 @@ export class NewsService {
     return this.http.get(`${baseUrl}news/admin/${searchParam}`);
   }
 
-  save(news: News, user: string): Observable<any> {
+  save(news: News): Observable<any> {
      let data: NewsData = {
       title: news.title,
       description: news.description,
-      createdBy: user
+      createdBy: null
     }
-    return this.http.post(`${baseUrl}news/`, data);
+    return this.http.post(`${baseUrl}news`, data);
   }
 
   update (news: News): Observable<any> {

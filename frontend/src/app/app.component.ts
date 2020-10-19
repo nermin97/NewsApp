@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthServiceService} from './auth/service/auth-service.service';
 import {Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,14 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
+  intervalId;
 
-  constructor(public authService: AuthServiceService, private router: Router) {
+  constructor(public authService: AuthServiceService) {
   }
 
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/news']);
+
   }
 }

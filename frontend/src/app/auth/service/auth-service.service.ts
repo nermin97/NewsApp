@@ -1,24 +1,26 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {baseUrl} from '../../../environments/environment';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
+  private http;
+  private router;
 
-  constructor(private http: HttpClient) {}
+  constructor(private injector: Injector) {
+    this.http = this.injector.get(HttpClient);
+    this.router = this.injector.get(Router);
+  }
 
   login(data): Observable<any> {
     return this.http.post(`${baseUrl}auth/login`, data);
   }
 
-  authorize(): Observable<any> {
-    return this.http.get(`${baseUrl}auth/`);
-  }
-
-  register(data) :Observable<any> {
+  register(data): Observable<any> {
     return this.http.post(`${baseUrl}auth/register`, data);
   }
 
@@ -34,7 +36,12 @@ export class AuthServiceService {
     return localStorage.getItem('email');
   }
 
+  userIsAdministrator(): boolean {
+    return (localStorage.getItem('type') != null && localStorage.getItem('type') === 'Administrator');
+  }
+
   logout() {
     localStorage.clear();
+    this.router.navigate(['/news']);
   }
 }

@@ -26,10 +26,17 @@
         <administrator.password>TheBoss990</administrator.password>
         <jwt.secret-key>o[HUG:'j[Hygi3390ru3KJGL'jbvdsd</jwt.secret-key>
         <jwt.issuer>krle</jwt.issuer>
+        <hibernate.search.default.directory_provider>filesystem</hibernate.search.default.directory_provider>
+        <hibernate.search.default.indexBase>./lucene/indexes</hibernate.search.default.indexBase>
     </properties>
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-orm</artifactId>
+            <version>5.6.0.Final</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-search-orm</artifactId>

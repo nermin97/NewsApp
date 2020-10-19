@@ -1,0 +1,17 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card>
+    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="registerProcess()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput type="email" required placeholder="E-mail" [formControl]="emailControl" >
+        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage('email')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" required placeholder="Password"  [formControl]="passwordControl">
+        <mat-error *ngIf="passwordControl.invalid">{{getErrorMessage('password')}}</mat-error>
+      </mat-form-field>
+      <button style="width: 100%" mat-raised-button color="warn" type="submit">Register Admin</button>
+    </form>
+  </mat-card>
+</div>

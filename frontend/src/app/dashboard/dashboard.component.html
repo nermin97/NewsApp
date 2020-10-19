@@ -1,7 +1,7 @@
 <form class="search-form">
   <mat-form-field class="example-full-width" >
     <mat-label>Filter</mat-label>
-    <input #input matInput name="searchParam" (keyup)="applyFilter($event)">
+    <input #input matInput name="searchParam" (keyup.enter)="applyFilter($event)">
   </mat-form-field>
 </form>
 <div class="mat-elevation-z8">

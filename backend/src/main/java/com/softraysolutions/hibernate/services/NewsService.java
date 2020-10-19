@@ -29,8 +29,9 @@ public class NewsService {
     }
 
     public NewsReturnData save(NewsData newsData, int userId) {
-        User editedBy = userDao.getById(userId);
-        News news = createNewsFromData(newsData, editedBy);
+        User user = userDao.getById(userId);
+        newsData.setCreatedBy(user.getEmail());
+        News news = createNewsFromData(newsData, user);
         int id = newsDao.save(news);
         news =  newsDao.get(id);
         return mapToReturnData(news);
@@ -38,8 +39,10 @@ public class NewsService {
 
     public NewsReturnData update(int newsId, NewsData newsData, int userId) {
         User editedBy = userDao.getById(userId);
-        News news = createNewsFromData(newsData, editedBy);
-        news.setId(newsId);
+        News news = newsDao.get(newsId);
+        news.setTitle(newsData.getTitle());
+        news.setDescription(newsData.getDescription());
+        news.setEditedBy(editedBy.getEmail());
         newsDao.update(news);
         return mapToReturnData(news);
     }

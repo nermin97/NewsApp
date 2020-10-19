@@ -5,12 +5,12 @@
   <form>
     <mat-form-field class="example-full-width">
       <mat-label>Title</mat-label>
-      <input matInput required [(ngModel)]="this.data.news.title" [formControl]="titleControl" >
+      <input name="title" matInput required [(ngModel)]="this.data.news.title" [formControl]="titleControl" >
       <mat-error *ngIf="titleControl.invalid">Invalid field!</mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
-      <textarea style="height: 160px" matInput [(ngModel)]="this.data.news.description" [formControl]="descriptionControl">{{this.data.news.description}}</textarea>
+      <textarea name="description" style="height: 160px" matInput [(ngModel)]="this.data.news.description" [formControl]="descriptionControl">{{this.data.news.description}}</textarea>
     </mat-form-field>
   </form>
   <div mat-dialog-actions class="example-full-width">

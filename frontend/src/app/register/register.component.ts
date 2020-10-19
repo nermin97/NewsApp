@@ -1,17 +1,16 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthServiceService} from '../auth/service/auth-service.service';
 import {Router} from '@angular/router';
-// import {FormControl, Validators} from '@angular/forms';
-
+import {openSnackBar} from '../news-public/news-public.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   emailControl;
   passwordControl;
 
@@ -19,8 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthServiceService,
               private router: Router,
-              private changeDetector: ChangeDetectorRef) {
-  }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.emailControl = new FormControl('', [
@@ -48,17 +46,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  loginProcess() {
-    if(this.formGroup.valid) {
+  registerProcess() {
+    if (this.formGroup.valid) {
       console.log(this.formGroup.value);
-      this.authService.login(this.formGroup.value).subscribe(result => {
-        console.log(result);
-        localStorage.setItem('token', result.token);
-        localStorage.setItem('email', result.email);
-        localStorage.setItem('type', result.type);
-        this.router.navigate(['/dashboard']);
-      })
+      this.authService.register(this.formGroup.value)
+        .subscribe(
+          result => {
+          console.log(result);
+          openSnackBar(this.snackBar, 'Successful!', 'Registration');
+          this.router.navigate(['/register']);
+        },
+        error => {
+          openSnackBar(this.snackBar, 'Failed!!!', 'Registration');
+        });
     }
   }
 }
-

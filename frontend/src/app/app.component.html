@@ -17,7 +17,7 @@
   </button>
   <mat-menu #menu="matMenu">
     <a mat-menu-item href="/dashboard">Dashboard</a>
-    <a mat-menu-item href="/register">New Admin</a>
+    <a *ngIf="this.authService.userIsAdministrator()" mat-menu-item href="/register">New Admin</a>
     <a mat-menu-item (click)="logout()">Logout</a>
   </mat-menu>
 </mat-toolbar>

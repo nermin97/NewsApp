@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ApplicationModule, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule, routingComponents} from './app-routing/app-routing.module';
@@ -54,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     MatTableModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ApplicationModule,
   ],
   providers: [
     AuthServiceService,

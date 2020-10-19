@@ -1,6 +1,7 @@
 <form class="search-form">
   <mat-form-field class="example-full-width" >
     <button
+      *ngIf="this.authService.loggedIn()"
       type="button"
       mat-mini-fab
       matPrefix
@@ -12,16 +13,20 @@
     <input matInput name="searchParam" (keyup.enter)="searchClicked()" [(ngModel)]="this.changingSearchParam">
   </mat-form-field>
 </form>
-<mat-grid-list class="example-full-width" [cols]="this.breakpoint" [rowHeight]="this.rowHeight" (window:resize)="onResize()">
-  <mat-grid-tile colspan="1" style="padding: 5px; margin: 5px" *ngFor="let news of pageSlice">
+<mat-grid-list id="news-grid-list" class="example-full-width" [cols]="this.breakpoint" [rowHeight]="this.rowHeight" (window:resize)="onResize()">
+  <mat-grid-tile colspan="1" style="padding: 5px; margin: 5px" *ngFor="let news of this.pageSlice">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{news.title}}</mat-card-title>
+        <mat-card-title>
+          <textarea [mat-autosize]="false" [disabled]="true" matInput style="height: 42px; width: 400px;">
+            {{news.title}}
+          </textarea>
+        </mat-card-title>
         <mat-card-subtitle>{{news.creationDate}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <textarea [mat-autosize]="false" [disabled]="true" matInput style="width: 493px; height: 172px" >{{news.description}}</textarea>
+        <textarea [mat-autosize]="false" [disabled]="true" matInput style="width: 493px; height: 150px" >{{news.description}}</textarea>
       </mat-card-content>
       <mat-card-actions *ngIf="this.authService.loggedIn()">
         <button color="primary" mat-button (click)="editNews(news)">EDIT</button>
