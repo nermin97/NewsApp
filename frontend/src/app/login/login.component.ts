@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      email: this.emailControl,
+      username: this.emailControl,
       password: this.passwordControl
     });
   }
 
   getErrorMessage(input: string) {
-    if (input === 'email' && (this.emailControl.hasError('required') || this.emailControl.hasError('email'))) {
+    if (input === 'username' && (this.emailControl.hasError('required') || this.emailControl.hasError('email'))) {
       return 'Invalid email address!';
     } else if (input === 'password' && this.passwordControl.hasError('required')) {
       return 'Invalid password!';
@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.formGroup.value).subscribe(result => {
         console.log(result);
         localStorage.setItem('token', result.token);
-        localStorage.setItem('email', result.email);
-        localStorage.setItem('type', result.type);
+        localStorage.setItem('username', result.user.username);
+        localStorage.setItem('userType', result.user.userType);
         this.router.navigate(['/dashboard']);
       })
     }

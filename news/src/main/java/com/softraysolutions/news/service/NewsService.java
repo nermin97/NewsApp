@@ -42,6 +42,7 @@ public class NewsService implements ServiceInterface<News> {
             News existing = optional.get();
             existing.setTitle(news.getTitle());
             existing.setDescription(news.getDescription());
+            existing.setEditedBy(news.getEditedBy());
             return repository.save(existing);
         }
         return null;
@@ -66,12 +67,12 @@ public class NewsService implements ServiceInterface<News> {
 
     public List<News> searchAdmin(User user, String search) {
         if (search.equals("all")) {
-            return this.repository.getNewsByCreatedByOrEditedBy(user, user.getEmail());
+            return this.repository.getNewsByCreatedByOrEditedBy(user, user.getUsername());
         }
         List<News> result = getSearchQuery(search).getResultList();
         return result.stream().filter(news ->
-                news.getCreatedBy().getEmail().equals(user.getEmail())
-                        || news.getEditedBy().equals(user.getEmail())).collect(Collectors.toList());
+                news.getCreatedBy().getUsername().equals(user.getUsername())
+                        || news.getEditedBy().equals(user.getUsername())).collect(Collectors.toList());
     }
 
     private FullTextQuery getSearchQuery(String search) {

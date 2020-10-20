@@ -3,12 +3,12 @@
     <form class="example-form" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput type="email" required placeholder="E-mail" [formControl]="emailControl" >
-        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage('email')}}</mat-error>
+        <input matInput type="email" name="username" required placeholder="E-mail" [formControl]="emailControl" >
+        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage('username')}}</mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" required placeholder="Password"  [formControl]="passwordControl">
+        <input matInput type="password" name="password" required placeholder="Password"  [formControl]="passwordControl">
         <mat-error *ngIf="passwordControl.invalid">{{getErrorMessage('password')}}</mat-error>
       </mat-form-field>
       <button style="width: 100%" mat-raised-button color="primary" type="submit">Login</button>

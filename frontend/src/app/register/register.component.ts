@@ -33,13 +33,13 @@ export class RegisterComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      email: this.emailControl,
+      username: this.emailControl,
       password: this.passwordControl
     });
   }
 
   getErrorMessage(input: string) {
-    if (input === 'email' && (this.emailControl.hasError('required') || this.emailControl.hasError('email'))) {
+    if (input === 'username' && (this.emailControl.hasError('required') || this.emailControl.hasError('email'))) {
       return 'Invalid email address!';
     } else if (input === 'password' && this.passwordControl.hasError('required')) {
       return 'Invalid password!';

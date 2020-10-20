@@ -33,11 +33,11 @@ export class AuthServiceService {
   }
 
   getUser() {
-    return localStorage.getItem('email');
+    return localStorage.getItem('username');
   }
 
-  userIsAdministrator(): boolean {
-    return (localStorage.getItem('type') != null && localStorage.getItem('type') === 'Administrator');
+  isSuperAdmin(): boolean {
+    return (localStorage.getItem('userType') != null && localStorage.getItem('userType') === 'SuperAdmin');
   }
 
   logout() {

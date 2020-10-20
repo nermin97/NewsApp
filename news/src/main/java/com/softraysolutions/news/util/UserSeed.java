@@ -1,5 +1,6 @@
 package com.softraysolutions.news.util;
 
+import com.softraysolutions.news.NewsApplication;
 import com.softraysolutions.news.model.User;
 import com.softraysolutions.news.model.enumeration.Enumerations;
 import com.softraysolutions.news.repository.UserRepository;
@@ -22,8 +23,8 @@ public class UserSeed {
         return (args -> {
             if (repository.findAll().size() == 0) {
                 User user = new User();
-                user.setEmail(email);
-                user.setPassword(password);
+                user.setUsername(email);
+                user.setPassword(NewsApplication.bCryptPasswordEncoder().encode(password));
                 user.setUserType(Enumerations.UserType.SuperAdmin);
                 repository.save(user);
             }

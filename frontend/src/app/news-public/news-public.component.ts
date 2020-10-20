@@ -70,7 +70,7 @@ export class NewsPublicComponent implements OnInit {
         openSnackBar(this.snackBar, 'Cannot be an empty field!', 'Title');
         return;
       }
-      this.newsService.update(result).subscribe(result => {
+      this.newsService.update(news.id, result).subscribe(result => {
         this.getNews();
       });
     });

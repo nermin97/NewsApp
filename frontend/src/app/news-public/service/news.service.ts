@@ -30,20 +30,19 @@ export class NewsService {
   }
 
   save(news: News): Observable<any> {
-     let data: NewsData = {
+    return this.http.post(
+      `${baseUrl}news`, {
       title: news.title,
       description: news.description,
       createdBy: null
-    }
-    return this.http.post(`${baseUrl}news`, data);
+    });
   }
 
-  update (news: News): Observable<any> {
-    let data: NewsData = {
+  update(id, news: News): Observable<any> {
+    return this.http.put(
+      `${baseUrl}news/${id}`, {
       title: news.title,
-      description: news.description,
-      createdBy: news.createdBy
-    }
-    return this.http.put(`${baseUrl}news/${news.id}`, data);
+      description: news.description
+    });
   }
 }

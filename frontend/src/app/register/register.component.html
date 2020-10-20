@@ -3,8 +3,8 @@
     <form class="example-form" [formGroup]="formGroup" (ngSubmit)="registerProcess()">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput type="email" required placeholder="E-mail" [formControl]="emailControl" >
-        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage('email')}}</mat-error>
+        <input matInput type="username" required placeholder="E-mail" [formControl]="emailControl" >
+        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage('username')}}</mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
